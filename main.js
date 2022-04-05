@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 // const config = process.env;
 dotenv.config();
-const port = 3001;
+const port = precess.env.PORT || 3001;
 const path = require('path')
 
 const home_route = require('./routes/home_route');
@@ -18,9 +18,9 @@ const more_route = require('./routes/more_route');
 // app.use('/api',chart_route);
 // app.use('/api',more_route);
 app
-// .use(express.static(path.join(__dirname, 'public')))
-// .set('views', path.join(__dirname, 'views'))
-// .set('view engine', 'ejs')
+.use(express.static(path.join(__dirname, 'public')))
+.set('views', path.join(__dirname, 'views'))
+.set('view engine', 'ejs')
 // .get('/', (req, res) => res.render('pages/index'))
 .use('/',(req, res) => {
   res.json({
