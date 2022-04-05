@@ -21,7 +21,7 @@ app
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/index'))
+// .get('/', (req, res) => res.render('pages/index'))
 .use('/test',(req, res) => {
   res.json({
     message: "TEST successful"
@@ -31,15 +31,15 @@ app
 
 
 // This should be the last route else any after it won't work
-// app.use("/", (req, res) => {
-//     res.status(404).json({
-//       message: "Page not found",
-//       error: {
-//         statusCode: 404,
-//         message: "You reached a route that is not defined on this server",
-//       },
-//     });
-//   });
+app.use("/", (req, res) => {
+    res.status(404).json({
+      message: "Page not found",
+      error: {
+        statusCode: 404,
+        message: "You reached a route that is not defined on this server",
+      },
+    });
+  });
 
 app.listen(port,()=>{
     console.log('Server is listening at ',port);
