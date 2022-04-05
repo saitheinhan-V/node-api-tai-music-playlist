@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
-const port = 5001;
+const dotenv = require('dotenv');
+
+// const config = process.env;
+dotenv.config();
+const port = process.env.PORT || 3001;
 const path = require('path')
 
 const home_route = require('./routes/home_route');
 const chart_route = require('./routes/chart_route');
 const more_route = require('./routes/more_route');
+
+
 
 
 // app.use('/api',home_route);
