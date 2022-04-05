@@ -12,11 +12,11 @@ const more_route = require('./routes/more_route');
 // app.use('/api',chart_route);
 // app.use('/api',more_route);
 app
-.use(express.static(path.join(__dirname, 'public')))
-.set('views', path.join(__dirname, 'views'))
-.set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/index'))
-.use('/test',(req, res) => {
+// .use(express.static(path.join(__dirname, 'public')))
+// .set('views', path.join(__dirname, 'views'))
+// .set('view engine', 'ejs')
+// .get('/', (req, res) => res.render('pages/index'))
+.use('/',(req, res) => {
   res.json({
     message: "TEST successful"
   })
