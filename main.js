@@ -10,6 +10,11 @@ const more_route = require('./routes/more_route');
 app.use('/api',home_route);
 app.use('/api',chart_route);
 app.use('/api',more_route);
+app.use('/test',(req, res) => {
+  res.json({
+    message: "TEST successful"
+  })
+})
 
 // This should be the last route else any after it won't work
 app.use("/", (req, res) => {
