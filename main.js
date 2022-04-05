@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 // const config = process.env;
 dotenv.config();
-const port = precess.env.PORT || 3001;
+const port = process.env.PORT || 3001;
 const path = require('path')
 
 const home_route = require('./routes/home_route');
