@@ -7,9 +7,9 @@ const chart_route = require('./routes/chart_route');
 const more_route = require('./routes/more_route');
 
 
-app.use('/api',home_route);
-app.use('/api',chart_route);
-app.use('/api',more_route);
+// app.use('/api',home_route);
+// app.use('/api',chart_route);
+// app.use('/api',more_route);
 app.use('/test',(req, res) => {
   res.json({
     message: "TEST successful"
