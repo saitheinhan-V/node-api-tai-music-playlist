@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const conn = require('../database/db_connection');
 const route_url = require('../route_config/route_url');
-// const requestBuilder = require('../request/request_builder');
+const requestBuilder = require('../request/request_builder');
 const formatted_date = require('../utils/date_time');
 const mongoDb = require('../database/mongo_db');
 const { getDb } = require('../database/mongo_db');
@@ -106,69 +106,69 @@ router.get('/mongo/list/genre', async (req, res) => {
 
 
 //get artist list
-// router.get(route_url.GET_ARTIST_LIST, async (req, res) => {
-//     var query = "select * from Artist order by rankOrder";    
+router.get(route_url.GET_ARTIST_LIST, async (req, res) => {
+    var query = "select * from Artist order by rankOrder";    
 
-//     var data = await requestBuilder.GET(query);
+    var data = await requestBuilder.GET(query);
 
-//     res.json(data);
+    res.json(data);
 
-// });
+});
 
-// //get all playlist
-// router.get(route_url.GET_ALL_PLAYLIST, async (req, res) => {
-//     var query = "select * from Playlist";
+//get all playlist
+router.get(route_url.GET_ALL_PLAYLIST, async (req, res) => {
+    var query = "select * from Playlist";
 
-//     var data = await requestBuilder.GET(query);
-//     res.json(data);
-// });
+    var data = await requestBuilder.GET(query);
+    res.json(data);
+});
 
-// //save new playlist
-// router.post(route_url.SAVE_NEW_PLAYLIST, async (req, res) => {
-//     var playlistName = req.query.playlistName
+//save new playlist
+router.post(route_url.SAVE_NEW_PLAYLIST, async (req, res) => {
+    var playlistName = req.query.playlistName
 
-//     if(playlistName == null){
-//         res.json({
-//             code: 500,
-//             message: 'Name required!',
-//         })
-//     }else{
-//         var query = "insert into playlist(userId,songIdList,playlistName,createdDate) Values(1,'','" + playlistName + "','" + formatted_date + "')";
+    if(playlistName == null){
+        res.json({
+            code: 500,
+            message: 'Name required!',
+        })
+    }else{
+        var query = "insert into playlist(userId,songIdList,playlistName,createdDate) Values(1,'','" + playlistName + "','" + formatted_date + "')";
 
-//         var data = await requestBuilder.INSERT(query);
+        var data = await requestBuilder.INSERT(query);
     
-//         res.json(data);
-//     }
+        res.json(data);
+    }
     
-// })
+})
 
-// //delete playlist
-// router.post(route_url.REMOVE_PLAYLIST, async (req, res) => {
-//     var id = req.query.playlistId
+//delete playlist
+router.post(route_url.REMOVE_PLAYLIST, async (req, res) => {
+    var id = req.query.playlistId
 
-//     if( id == null){
-//         res.json({
-//             code: 500,
-//             message: 'Id required!',
-//         })
-//     }else{
-//         var query = "delete from playlist where playlistId =" + id;
+    if( id == null){
+        res.json({
+            code: 500,
+            message: 'Id required!',
+        })
+    }else{
+        var query = "delete from playlist where playlistId =" + id;
 
-//         var data = await requestBuilder.DELETE(query);
+        var data = await requestBuilder.DELETE(query);
 
-//         res.json(data);
-//     }
-// })
+        res.json(data);
+    }
+})
 
-// //get all genres
-// router.get(route_url.GET_ALL_GENRE, async (req, res) => {
+//get all genres
+router.get(route_url.GET_ALL_GENRE, async (req, res) => {
 
-//     var query = "select * from Genre";
+    var query = "select * from Genre";
 
-//     var data = await requestBuilder.GET(query);
+    var data = await requestBuilder.GET(query);
 
-//     res.json(data);
-// })
+    res.json(data);
+})
 
 
 module.exports = router

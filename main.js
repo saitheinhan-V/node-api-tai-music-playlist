@@ -6,28 +6,29 @@ const dotenv = require('dotenv');
 dotenv.config();
 const port = process.env.PORT || 3001;
 const path = require('path')
+const imageDir = path.join(__dirname,'uploads'); 
 
 const home_route = require('./routes/home_route');
 const chart_route = require('./routes/chart_route');
 const more_route = require('./routes/more_route');
+const file_upload = require('./routes/file_upload');
 
-
-
-
-// app.use('/api',home_route);
-// app.use('/api',chart_route);
-// app.use('/api',more_route);
 app
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
+.use(express.static(imageDir)) //call image from uploads folder in project
 .use('/api',home_route)
+.use(file_upload)
+.use(express.json())
+.use(express.urlencoded({ extended: true }))
 // .get('/', (req, res) => res.render('pages/index'))
 .use('/test',(req, res) => {
   res.json({
     message: "TEST successful"
   })
 })
+
 
 
 
