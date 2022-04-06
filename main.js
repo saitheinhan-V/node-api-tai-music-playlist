@@ -21,6 +21,7 @@ app
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
+.use('/api',home_route)
 // .get('/', (req, res) => res.render('pages/index'))
 .use('/test',(req, res) => {
   res.json({
