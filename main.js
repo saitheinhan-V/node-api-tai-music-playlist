@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 
 // const config = process.env;
 dotenv.config();
@@ -17,6 +18,8 @@ app
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
+.use(bodyParser.json({limit: '50mb'}))
+.use(bodyParser.urlencoded({extended: true,limit: '50mb'}))
 .use(express.static(imageDir)) //call image from uploads folder in project
 .use('/api',home_route)
 .use(file_upload)
