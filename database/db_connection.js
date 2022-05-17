@@ -26,7 +26,7 @@ const password = process.env.PASSWORD || "password"
 
 const pool = mysql.createPool(
     {
-        host: host,
+        host: "localhost",
         user: user,
         password: password,
         database: "tai_music_playlist"
