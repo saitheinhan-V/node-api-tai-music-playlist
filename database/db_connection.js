@@ -29,7 +29,8 @@ const pool = mysql.createPool(
         host: "localhost",
         user: user,
         password: password,
-        database: "tai_music_playlist"
+        database: "saitheinhan"
+        //tai_music_playlist
     }
 )
 
