@@ -107,12 +107,17 @@ router.get('/mongo/list/genre', async (req, res) => {
 
 //get artist list
 router.get(route_url.GET_ARTIST_LIST, async (req, res) => {
-    var query = "select * from Artist order by rankOrder";    
+    
+    try {
+        var query = "select * from Artist order by rankOrder";    
 
-    var data = await requestBuilder.GET(query);
+        var data = await requestBuilder.GET(query);
 
-    res.json(data);
-
+        res.json(data);
+    } catch (error) {
+        console.log(error.stack);
+    }
+    
 });
 
 //get all playlist
