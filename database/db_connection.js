@@ -1,4 +1,7 @@
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // const connection = mysql.createConnection(
 //     {
@@ -17,11 +20,15 @@ const mysql = require('mysql');
 //       console.log('Database Connection established');
 // });
 
+const host = process.env.HOST || "localhost"
+const user = process.env.USER_NAME || "root"
+const password = process.env.PASSWORD || "password"
+
 const pool = mysql.createPool(
     {
-        host: "localhost",
-        user: "root",
-        password: "password",
+        host: host,
+        user: user,
+        password: password,
         database: "tai_music_playlist"
     }
 )

@@ -109,7 +109,7 @@ router.get('/mongo/list/genre', async (req, res) => {
 router.get(route_url.GET_ARTIST_LIST, async (req, res) => {
     
     try {
-        var query = "select * from Artist order by rankOrder";    
+        var query = "select * from artist order by rankOrder";    
 
         var data = await requestBuilder.GET(query);
 
@@ -122,7 +122,7 @@ router.get(route_url.GET_ARTIST_LIST, async (req, res) => {
 
 //get all playlist
 router.get(route_url.GET_ALL_PLAYLIST, async (req, res) => {
-    var query = "select * from Playlist";
+    var query = "select * from playlist";
 
     var data = await requestBuilder.GET(query);
     res.json(data);
@@ -168,7 +168,7 @@ router.post(route_url.REMOVE_PLAYLIST, async (req, res) => {
 //get all genres
 router.get(route_url.GET_ALL_GENRE, async (req, res) => {
 
-    var query = "select * from Genre";
+    var query = "select * from genre";
 
     var data = await requestBuilder.GET(query);
 
